@@ -9,22 +9,22 @@ class CorreoController extends Controller {
 
     public function login(Request $request) {
 
-        $correo = $request->input('correo');
-        $contraseña = $request->input('contraseña');
+        $correo = $request -> input('correo');
+        $contraseña = $request -> input('contraseña');
 
         $usuario = DB::table('userdata')
 
-            ->where('email', $correo)
-            ->where('password', $contraseña)
-            ->first();
+            -> where('email', $correo)
+            -> where('password', $contraseña)
+            -> first();
 
         if ($usuario) {
 
-            return response()->json(["mensaje" => "Inicio de sesión exitoso"], 200);
+            return response()->json([ "mensaje" => "Inicio de sesión exitoso" ], 200);
 
         } else {
 
-            return response()->json(["mensaje" => "Combinación de correo y contraseña incorrecta"], 401);
+            return response()->json([ "mensaje" => "Combinación de correo y contraseña incorrecta" ], 401);
 
         }
 

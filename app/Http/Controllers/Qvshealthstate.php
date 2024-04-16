@@ -9,19 +9,23 @@ class Qvshealthstate extends Controller {
 
     public function mine(Request $request) {
 
-        $data = $request->json()->all();
+        $data = $request -> json() -> all();
 
-        $gender = $data['gender'];
-        $user = $data['user'];
+        $id_userdata = $data['id_userdata'];
         $aPsiastolic = $data['aPsiastolic'];
         $aPdiastolic = $data['aPdiastolic'];
         $glucose = $data['glucose'];
-        $ColesterolT = $data['ColesterolT'];
+        $colesterolT = $data['colesterolT'];
         $HDL = $data['HDL'];
         $LDL = $data['LDL'];
-        $Trigliceridos = $data['Trigliceridos'];
+        $triglycerides = $data['triglycerides'];
 
-        DB::insert('insert into healthstatetable (gender, user, aPsiastolic, aPdiastolic, glucose, ColesterolT, HDL, LDL, Trigliceridos) values (?, ?, ?, ?, ?, ?, ?, ?, ?)', [$gender, $user, $aPsiastolic, $aPdiastolic, $glucose, $ColesterolT, $HDL, $LDL, $Trigliceridos]);
+        DB::insert(
+
+            'insert into health_state_calc_info (id_userdata, aPsiastolic, aPdiastolic, glucose, colesterolT, HDL, LDL, triglycerides) values (?, ?, ?, ?, ?, ?, ?, ?)',
+            [$id_userdata, $aPsiastolic, $aPdiastolic, $glucose, $colesterolT, $HDL, $LDL, $triglycerides]
+
+        );
 
         return response()->json(
 

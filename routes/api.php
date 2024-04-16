@@ -21,8 +21,6 @@ use App\Http\Controllers\CorreoController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) { return $request->user(); });
 
-Route::get('/hello', [App\Http\Controllers\HelloController::class, 'index']);
-
 Route::post('/userdata', [App\Http\Controllers\CorreoController::class, 'login']);
 
 Route::post('/results', [App\Http\Controllers\Qvsapireq::class, 'store']);
